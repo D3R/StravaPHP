@@ -40,7 +40,11 @@ class REST implements ServiceInterface
 
     private function getToken()
     {
-        return $this->token;
+        $token = $this->token;
+        if (is_object($token) && method_exists($token, 'getToken')) {
+            $token = $token->getToken();
+        }
+        return $token;
     }
 
     /**
