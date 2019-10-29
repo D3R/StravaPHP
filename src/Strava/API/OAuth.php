@@ -18,7 +18,7 @@ class OAuth extends AbstractProvider
 {
     use BearerAuthorizationTrait;
 
-    public $scopes = ['write'];
+    public $scopes = ['read_all', 'activity:read_all'];
     public $responseType = 'json';
 
     /**
@@ -117,7 +117,7 @@ class OAuth extends AbstractProvider
      */
     protected function getDefaultScopes()
     {
-        return ['write'];
+        return $this->scopes;
     }
 
     /**
